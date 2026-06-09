@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Carrito | Botica Estrella</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="logo/botica_estrella-logo.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    
+  </head>
+
+  <body class="cart-page">
+    <header class="navbar">
+      <div class="logo">
+        <img src="img/Botica.png" alt="Botica Estrella"/>
+      </div>
+
+      <div class="nav-actions">
+        <a href="productos.html" class="nav-item">
+          <img src="img/carrito.png" alt="Productos"/>
+          <span>Productos</span>
+        </a>
+        <a href="perfil.html" class="nav-item">
+          <img src="img/user.png" alt="Perfil"/>
+          <span>Perfil</span>
+        </a>
+        <a href="index.html" class="nav-item">
+          <img src="img/home.png" alt="Home"/>
+          <span>Home</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="cart-container">
+      <h2>Mi Carrito</h2>
+
+      <div class="cart-content">
+        <div class="cart-items">
+          <div class="cart-item">
+            <img src="img/paracetamol.png" alt="Paracetamol" />
+            <div class="item-info">
+              <p>Paracetamol 120mg/5ml Jarabe</p>
+              <span>S/. 2.00</span>
+            </div>
+            <div class="item-quantity">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+            <div class="item-remove">✖</div>
+          </div>
+
+          <div class="cart-item">
+            <img src="img/ibuprofeno.jpg" alt="Ibuprofeno"/>
+            <div class="item-info">
+              <p>Ibuprofeno 800 mg Tableta Recubierta</p>
+              <span>S/. 15.00</span>
+            </div>
+            <div class="item-quantity">
+              <button>-</button>
+              <span>2</span>
+              <button>+</button>
+            </div>
+            <div class="item-remove">✖</div>
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <h3>Resumen</h3>
+          <p>Subtotal: <span>S/. 32.00</span></p>
+          <p>Envío: <span>Gratis</span></p>
+          <hr />
+          <h2>Total: S/. 32.00</h2>
+          <button class="checkout-btn" onclick="openTracking()">Finalizar Compra</button>
+          <button class="link" style="margin-top: 15px; background: none; border: 1px solid #0d4d8b; color: #0d4d8b;" onclick="openTracking()">Ver Seguimiento de mi pedido</button>
+        </div>
+      </div>
+    </main>
+
+    <div id="trackingModal" class="modal">
+      <div class="modal-content" style="width: 450px;">
+        <span class="close" onclick="closeTracking()">&times;</span>
+        <h2 style="margin-bottom: 25px;">Estado de tu Pedido</h2>
+        
+        <div class="tracking-wrapper">
+          <div class="tracking-item completed">
+            <div class="tracking-icon">✔</div>
+            <div class="tracking-content">
+              <h4>Pedido Recibido</h4>
+              <p>Tu orden ha sido confirmada</p>
+            </div>
+          </div>
+          <div class="tracking-item active">
+            <div class="tracking-icon">📦</div>
+            <div class="tracking-content">
+              <h4>Preparando Pedido</h4>
+              <p>Estamos empaquetando tus productos</p>
+            </div>
+          </div>
+          <div class="tracking-item">
+            <div class="tracking-icon">🚚</div>
+            <div class="tracking-content">
+              <h4>En Camino</h4>
+              <p>El motorizado está cerca de tu dirección</p>
+            </div>
+          </div>
+          <div class="tracking-item">
+            <div class="tracking-icon">🏠</div>
+            <div class="tracking-content">
+              <h4>Entregado</h4>
+              <p>Pedido entregado con éxito</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loginModal" class="modal">...</div>
+    <div id="registerModal" class="modal">...</div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div><h3>Botica Estrella</h3><a href="#">Cuidando tu bienestar</a></div>
+        <div><h3>Contacto</h3><a href="#">+51 924 412 183</a></div>
+        <div><h3>Enlaces</h3><a href="nosotros.html">Sobre Nosotros</a></div>
+      </div>
+      <div class="footer-bottom">© 2026 Botica Estrella+</div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
