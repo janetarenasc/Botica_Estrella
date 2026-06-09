@@ -16,4 +16,10 @@ public class ProductosService {
     public List<Productos> listarTodos() {
         return repository.findAll();
     }
+
+    public Productos buscarPorId(Long id) {
+
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+    }
 }

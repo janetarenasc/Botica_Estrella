@@ -3,8 +3,10 @@ package com.botica.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.botica.model.Productos;
 import com.botica.service.ProductosService;
 
 @Controller
@@ -25,5 +27,15 @@ public class ProductosController {
                 service.listarTodos());
 
         return "productos";
+    }
+
+    @GetMapping("/{id}")
+    public String detalleProducto(@PathVariable Long id, Model model) {
+
+        Productos producto = service.buscarPorId(id);
+
+        model.addAttribute("producto", producto);
+
+        return "detalle";
     }
 }

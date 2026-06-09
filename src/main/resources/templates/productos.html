@@ -150,12 +150,12 @@
               class="w-full bg-slate-50 border border-slate-200 text-slate-700 font-bold rounded-xl py-3 px-4 appearance-none outline-none focus:ring-2 focus:ring-medical-blue cursor-pointer">
               <option value="todos">Todos los Productos</option>
               <option value="medicamentos">Medicamentos</option>
-              <option value="cuidado">Cuidado Personal</option>
-              <option value="auxilios">Primeros Auxilios</option>
+              <option value="cuidado personal">Cuidado Personal</option>
+              <option value="primeros auxilios">Primeros Auxilios</option>
               <option value="higiene">Higiene</option>
-              <option value="equipo">Equipo Médico</option>
+              <option value="equipo médico">Equipo Médico</option>
               <option value="suplemento">Suplemento</option>
-              <option value="rehabilitacion">Rehabilitación</option>
+              <option value="rehabilitación">Rehabilitación</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,53 +183,127 @@
 
         <!-- 3. Formato / Presentación -->
         <div class="mb-8">
-          <h3 class="text-sm font-bold text-slate-800 mb-4">Presentación</h3>
+          <h3 class="text-sm font-bold text-slate-800 mb-4">
+            Presentación
+          </h3>
+
           <div class="space-y-3" id="formatosContainer">
+
             <label class="flex items-center gap-3 cursor-pointer group">
               <input type="checkbox" value="tableta"
-                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue transition-all cursor-pointer">
-              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">Tabletas / Pastillas</span>
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Tabletas
+              </span>
             </label>
+
             <label class="flex items-center gap-3 cursor-pointer group">
               <input type="checkbox" value="jarabe"
-                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue transition-all cursor-pointer">
-              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">Jarabe / Líquido</span>
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Jarabes
+              </span>
             </label>
+
             <label class="flex items-center gap-3 cursor-pointer group">
               <input type="checkbox" value="crema"
-                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue transition-all cursor-pointer">
-              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">Cremas / Geles</span>
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Cremas
+              </span>
             </label>
-            <label class="flex items-center gap-3 cursor-pointer group">
-              <input type="checkbox" value="accesorio"
-                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue transition-all cursor-pointer">
-              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">Accesorios / Equipos</span>
-            </label>
-          </div>
-        </div>
 
-        <!-- 4. Marcas Destacadas -->
-        <div>
-          <h3 class="text-sm font-bold text-slate-800 mb-4">Marcas</h3>
-          <div class="flex flex-wrap gap-2" id="marcasContainer">
-            <button
-              class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
-              data-marca="farmindustria">Farmindustria</button>
-            <button
-              class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
-              data-marca="oldspice">Old Spice</button>
-            <button
-              class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
-              data-marca="ninet">Ninet</button>
-            <button
-              class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
-              data-marca="bayer">Bayer</button>
-            <button
-              class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
-              data-marca="generico">Genérico</button>
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="gel"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Geles
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="cápsula"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Cápsulas
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="unidad"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Unidades / Equipos
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="solución"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Solución
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="paquete"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Paquete
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="caja"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Cajas
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="gotas"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Gotas
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="botella"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Botellas
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input type="checkbox" value="pack"
+                class="filtro-formato w-5 h-5 text-medical-blue rounded border-slate-300 focus:ring-medical-blue cursor-pointer">
+              <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900">
+                Pack
+              </span>
+            </label>
+          </div>
+          <!-- 4. Marcas Destacadas -->
+          <div>
+            <h3 class="text-sm font-bold text-slate-800 mb-4">Marcas</h3>
+            <div class="flex flex-wrap gap-2" id="marcasContainer">
+              <button
+                class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
+                data-marca="old spice">Old Spice</button>
+              <button
+                class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
+                data-marca="ninet plus">Ninet</button>
+              <button
+                class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
+                data-marca="bayer">Bayer</button>
+              <button
+                class="filtro-marca bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer transition-colors"
+                data-marca="generico">Genérico</button>
+            </div>
           </div>
         </div>
-      </div>
     </aside>
 
     <!-- === ÁREA DEL CATÁLOGO === -->
@@ -243,7 +317,7 @@
 
       <!-- GRID DE PRODUCTOS (FÍJATE EN LOS DATA-ATTRIBUTES) -->
       <section id="productosGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-        <article th:each="producto : ${productos}"
+        <a th:href="@{/productos/{id}(id=${producto.id})}" th:each="producto : ${productos}"
           class="catalog-card bg-white rounded-[1.5rem] shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col group relative"
           th:data-categoria="${producto.categoria}" th:data-precio="${producto.precio}"
           th:data-formato="${producto.formato}" th:data-marca="${producto.marca}">
@@ -279,7 +353,7 @@
 
           </div>
 
-        </article>
+          </a>
       </section>
 
       <!-- Mensaje SIN RESULTADOS -->
@@ -313,12 +387,12 @@
       <div>
         <h3 class="text-lg font-bold mb-6 text-white tracking-wide">Navegación</h3>
         <ul class="space-y-3">
-          <li><a href="index.html"
+          <li><a href="#"
               class="text-blue-200 hover:text-white hover:underline transition-all text-sm">Inicio</a></li>
-          <li><a href="productos.html"
+          <li><a href="/productos"
               class="text-blue-200 hover:text-white hover:underline transition-all text-sm">Catálogo de Productos</a>
           </li>
-          <li><a href="nosotros.html"
+          <li><a href="/nosotros"
               class="text-blue-200 hover:text-white hover:underline transition-all text-sm">Sobre Nosotros</a></li>
         </ul>
       </div>
@@ -376,8 +450,7 @@
       </div>
       <div class="text-slate-400 text-sm font-medium flex items-center gap-2">
         <span>Desarrollado por</span>
-        <span class="bg-white text-medical-dark px-2 py-0.5 rounded font-black text-xs tracking-wider">Wansd
-          System</span>
+        <span class="bg-white text-medical-dark px-2 py-0.5 rounded font-black text-xs tracking-wider">Equipo7</span>
       </div>
     </div>
   </footer>
