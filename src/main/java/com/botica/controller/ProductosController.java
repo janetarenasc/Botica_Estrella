@@ -21,11 +21,7 @@ public class ProductosController {
 
     @GetMapping
     public String mostrarProductos(Model model) {
-
-        model.addAttribute(
-                "productos",
-                service.listarTodos());
-
+        model.addAttribute("productos", service.listarTodos());
         return "productos";
     }
 
@@ -34,7 +30,7 @@ public class ProductosController {
 
         Productos producto = service.buscarPorId(id);
 
-        model.addAttribute("producto", producto);
+        model.addAttribute("producto", producto); // 👈 IMPORTANTE (singular)
 
         return "detalle";
     }

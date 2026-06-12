@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios | Admin Botica</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            blue: '#0d4d8b',
+                            dark: '#0a3663',
+                            light: '#f0f7ff',
+                            accent: '#2ecc71',
+                            border: '#e2e8f0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+
+    <main class="max-w-6xl mx-auto px-6 py-10">
+
+        <!-- HEADER -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-black text-slate-800">
+                Usuarios Registrados
+            </h1>
+            <p class="text-slate-500 mt-1">
+                Gestión de cuentas del sistema de botica
+            </p>
+        </div>
+
+        <!-- TABLE -->
+        <div class="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden">
+
+            <div class="overflow-x-auto">
+
+                <table class="w-full text-sm">
+
+                    <!-- HEADER -->
+                    <thead class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
+                        <tr>
+                            <th class="p-4 text-left">ID</th>
+                            <th class="p-4 text-left">Usuario</th>
+                            <th class="p-4 text-left">Email</th>
+                            <th class="p-4 text-left">Rol</th>
+                        </tr>
+                    </thead>
+
+                    <!-- BODY -->
+                    <tbody class="divide-y divide-slate-100">
+
+                        <tr th:each="u : ${usuarios}" class="hover:bg-slate-50 transition">
+
+                            <!-- ID -->
+                            <td class="p-4 font-bold text-slate-500" th:text="${u.id}"></td>
+
+                            <!-- NOMBRE -->
+                            <td class="p-4 font-bold text-slate-800">
+                                <div class="flex items-center gap-3">
+
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-medical-light flex items-center justify-center text-medical-blue font-black">
+                                        👤
+                                    </div>
+
+                                    <span th:text="${u.nombre}"></span>
+
+                                </div>
+                            </td>
+
+                            <!-- EMAIL -->
+                            <td class="p-4 text-slate-600" th:text="${u.email}"></td>
+
+                            <!-- ROL -->
+                            <td class="p-4">
+
+                                <span th:text="${u.role}"
+                                    class="px-3 py-1 rounded-full text-xs font-black">
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

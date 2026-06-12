@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Botica Estrella</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            blue: '#0d4d8b',
+                            dark: '#0a3663',
+                            light: '#f0f7ff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-slate-200">
+
+        <!-- HEADER -->
+        <div class="text-center mb-8">
+            <div class="text-4xl mb-2">💊</div>
+            <h1 class="text-3xl font-black text-medical-dark">
+                Botica Estrella
+            </h1>
+            <p class="text-slate-500 text-sm mt-2">
+                Inicia sesión para continuar
+            </p>
+        </div>
+
+        <!-- FORM -->
+        <form method="post" action="/login" class="space-y-5">
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <!-- EMAIL -->
+            <div>
+                <label class="text-sm font-bold text-slate-600">Correo</label>
+                <input type="text" name="username"
+                    class="w-full mt-1 px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-medical-blue"
+                    placeholder="tucorreo@email.com" required>
+            </div>
+
+            <!-- PASSWORD -->
+            <div>
+                <label class="text-sm font-bold text-slate-600">Contraseña</label>
+                <input type="password" name="password"
+                    class="w-full mt-1 px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-medical-blue"
+                    placeholder="••••••••" required>
+            </div>
+
+            <div th:if="${param.error}" class="mb-4 bg-red-100 text-red-700 p-3 rounded-xl">
+                Correo o contraseña incorrectos
+            </div>
+
+            <!-- BOTÓN -->
+            <button type="submit"
+                class="w-full bg-medical-blue hover:bg-medical-dark text-white font-bold py-3 rounded-xl transition">
+                Iniciar Sesión
+            </button>
+
+        </form>
+
+        <!-- FOOTER -->
+        <p class="text-center text-xs text-slate-400 mt-6">
+            © 2026 Botica Estrella
+        </p>
+
+    </div>
+
+</body>
+
+</html>

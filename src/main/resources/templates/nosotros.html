@@ -1,152 +1,151 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nosotros | Botica Estrella</title>
-  <link rel="stylesheet" href="../static/css/styles.css" />
+
   <link rel="icon" href="logo/botica_estrella-logo.ico" type="image/x-icon">
-  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-  
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            medical: {
+              blue: '#0d4d8b',
+              dark: '#0a3663',
+              light: '#f0f7ff',
+              accent: '#2ecc71',
+              border: '#e2e8f0'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
-<body class="about-page">
-  <header class="navbar">
-    <div class="logo">
-      <img src="img/Botica.png" alt="Botica Estrella" />
-    </div>
-    <div class="nav-actions">
-      <a href="index.html" class="nav-item">
-                <img src="img/home.png" alt="Home" />
-                <span>Home</span>
-            </a>
-      <a href="productos.html" class="nav-item"><span>Productos</span></a>
-      <a href="carrito.html" class="nav-item">
-        <img src="img/carrito.png" alt="Carrito" />
-        <span>Carrito</span>
-      </a>
-      <a href="#" class="nav-item" onclick="openLogin()">
-        <img src="img/user.png" alt="Usuario" />
-        <span>Iniciar Sesión</span>
-      </a>
-    </div>
-  </header>
+<body class="bg-slate-50 min-h-screen flex flex-col">
 
-  <main>
-    <section class="about-hero">
-      <div class="about-hero-content">
-        <h1>Nuestra Historia, Tu Salud</h1>
-        <p>Llevamos años siendo la farmacia de confianza en tu comunidad, brindando soluciones reales para tu bienestar.</p>
+  <!-- NAVBAR -->
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+  <main class="flex-1">
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-r from-medical-blue to-blue-500 text-white py-20">
+      <div class="max-w-5xl mx-auto px-6 text-center">
+
+        <h1 class="text-4xl md:text-6xl font-black mb-6">
+          Nuestra Historia, Tu Salud
+        </h1>
+
+        <p class="text-lg text-white/90">
+          Llevamos años siendo la farmacia de confianza en tu comunidad, brindando soluciones reales para tu bienestar.
+        </p>
+
       </div>
     </section>
 
-    <section class="about-history">
-      <div class="history-text">
-        <h2>Comprometidos con el Perú</h2>
-        <p>Botica Estrella nació con la visión de hacer que la salud sea accesible para todos. Desde nuestras raíces en Lima, hemos crecido manteniendo la misma calidez humana y profesionalismo que nos caracteriza.</p>
-        <p>Entendemos que detrás de cada receta hay una persona y una familia que busca tranquilidad. Por eso, no solo vendemos productos, ofrecemos asesoría experta de confianza.</p>
+    <!-- HISTORIA -->
+    <section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+
+      <div>
+        <h2 class="text-3xl font-black text-slate-800 mb-6">
+          Comprometidos con el Perú
+        </h2>
+
+        <p class="text-slate-600 mb-4">
+          Botica Estrella nació con la visión de hacer que la salud sea accesible para todos. Desde nuestras raíces en
+          Lima, hemos crecido manteniendo la misma calidez humana y profesionalismo.
+        </p>
+
+        <p class="text-slate-600">
+          Entendemos que detrás de cada receta hay una persona. Por eso ofrecemos no solo productos, sino asesoría
+          confiable.
+        </p>
       </div>
-      <div class="history-img">
-        <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?q=80&w=2069&auto=format&fit=crop" alt="Botica Estrella local">
+
+      <div class="rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+        <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?q=80&w=2069&auto=format&fit=crop"
+          class="w-full h-full object-cover" />
       </div>
+
     </section>
 
-    <section class="values-section">
-      <h2 style="color: #0d4d8b; font-size: 32px;">Nuestros Valores Pilares</h2>
-      <div class="values-grid">
-        <div class="value-card-new">
-          <span class="value-icon">🤝</span>
-          <h3>Confianza</h3>
-          <p>Tu salud está en las mejores manos. Seguridad garantizada.</p>
+    <!-- VALORES -->
+    <section class="bg-white py-16 border-y border-slate-200">
+
+      <div class="max-w-6xl mx-auto px-6">
+
+        <h2 class="text-3xl font-black text-center text-medical-blue mb-12">
+          Nuestros Valores Pilares
+        </h2>
+
+        <div class="grid md:grid-cols-4 gap-6">
+
+          <div class="p-6 rounded-3xl border shadow-sm text-center">
+            <div class="text-4xl mb-3">🤝</div>
+            <h3 class="font-black mb-2">Confianza</h3>
+            <p class="text-slate-500 text-sm">Tu salud está en buenas manos.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl border shadow-sm text-center">
+            <div class="text-4xl mb-3">✨</div>
+            <h3 class="font-black mb-2">Calidad</h3>
+            <p class="text-slate-500 text-sm">Productos certificados y seguros.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl border shadow-sm text-center">
+            <div class="text-4xl mb-3">❤️</div>
+            <h3 class="font-black mb-2">Empatía</h3>
+            <p class="text-slate-500 text-sm">Atención humana y cercana.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl border shadow-sm text-center">
+            <div class="text-4xl mb-3">🚀</div>
+            <h3 class="font-black mb-2">Innovación</h3>
+            <p class="text-slate-500 text-sm">Procesos modernos y rápidos.</p>
+          </div>
+
         </div>
-        <div class="value-card-new">
-          <span class="value-icon">✨</span>
-          <h3>Calidad</h3>
-          <p>Solo trabajamos con laboratorios certificados y productos originales.</p>
-        </div>
-        <div class="value-card-new">
-          <span class="value-icon">❤️</span>
-          <h3>Empatía</h3>
-          <p>Entendemos tus necesidades y te atendemos con calidez humana.</p>
-        </div>
-        <div class="value-card-new">
-          <span class="value-icon">🚀</span>
-          <h3>Innovación</h3>
-          <p>Mejoramos nuestros procesos para darte la atención más rápida.</p>
-        </div>
+
       </div>
+
     </section>
 
-    <section class="about-map-section">
-      <h2>Nuestra Ubicación Principal</h2>
-      <p>Visítanos en nuestra sede central y recibe la mejor atención farmacéutica.</p>
-      <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.388072498456!2d-76.884474!3d-12.016782500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c3c608bfd58f%3A0x33621d66d8e789ef!2sBotica%20Estrella!5e0!3m2!1ses-419!2spe!4v1777174329196!5m2!1ses-419!2spe" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+    <!-- MAPA -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+
+      <h2 class="text-3xl font-black text-center text-slate-800 mb-4">
+        Nuestra Ubicación
+      </h2>
+
+      <p class="text-center text-slate-500 mb-10">
+        Visítanos en nuestra sede principal
+      </p>
+
+      <div class="w-full h-[450px] rounded-3xl overflow-hidden border shadow-sm">
+  <iframe
+    src="https://www.google.com/maps?q=Botica%20Estrella%20Lima&output=embed"
+    class="w-full h-full"
+    style="border:0;"
+    loading="lazy"
+    allowfullscreen>
+  </iframe>
+</div>
+
     </section>
+
   </main>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <div>
-        <h3>Botica Estrella</h3>
-        <p>Cuidando tu bienestar</p>
-      </div>
-      <div>
-        <h3>Contacto</h3>
-        <p>+51 924 412 183</p>
-      </div>
-      <div>
-        <h3>Enlaces</h3>
-        <a href="nosotros.html">Sobre Nosotros</a>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2026 Botica Estrella</div>
-  </footer>
+  <!-- FOOTER -->
+  <div th:replace="~{fragments/footer :: footer}"></div>
 
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Iniciar sesión</h2>
-      <div class="input-group">
-        <img src="img/correo.png" class="icon-img" alt="Correo" />
-        <input type="email" id="loginEmail" placeholder="Correo electrónico" />
-      </div>
-      <div class="input-group">
-        <input type="password" id="password" placeholder="Contraseña" />
-        <img src="img/ojo.png" class="eye-icon" onclick="togglePassword()" />
-      </div>
-      <button onclick="validarLogin()">Ingresar</button>
-      <p class="error-msg" id="loginError"></p>
-      <p>¿No tienes cuenta? <span class="link" onclick="openRegister()">Registrarse</span></p>
-    </div>
-  </div>
-
-  <div id="registerModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Crear cuenta</h2>
-      <div class="input-group">
-        <img src="img/usuario.png" class="icon-img" alt="Usuario" />
-        <input type="text" id="regNombre" placeholder="Nombre" />
-      </div>
-      <div class="input-group">
-        <img src="img/correo.png" class="icon-img" alt="Correo" />
-        <input type="email" id="regEmail" placeholder="Correo electrónico" />
-      </div>
-      <div class="input-group">
-        <input type="password" id="regPassword" placeholder="Contraseña" />
-      </div>
-      <div class="input-group">
-        <img src="img/bloquear.png" class="icon-img" alt="Bloquear" />
-        <input type="password" id="regConfirm" placeholder="Confirmar contraseña" />
-      </div>
-      <button onclick="validarRegistro()">Registrarse</button>
-      <p class="error-msg" id="regError"></p>
-      <p>¿Ya tienes cuenta? <span class="link" onclick="openLogin()">Iniciar sesión</span></p>
-    </div>
-  </div>
-
-  <script type="module" src="script.js"></script>
 </body>
+
 </html>

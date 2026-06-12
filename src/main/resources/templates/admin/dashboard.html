@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Admin | Botica Estrella</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            blue: '#0d4d8b',
+                            dark: '#0a3663',
+                            light: '#f0f7ff',
+                            accent: '#2ecc71',
+                            border: '#e2e8f0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 via-white to-slate-100">
+
+    <main class="max-w-7xl mx-auto px-6 py-10 space-y-10">
+
+        <!-- HEADER -->
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+
+            <div>
+                <h1 class="text-4xl font-black text-medical-dark">
+                    Panel Administrativo
+                </h1>
+
+                <p class="text-slate-500 mt-1">
+                    Control general del sistema de Botica Estrella
+                </p>
+            </div>
+
+            <div class="text-sm text-slate-400">
+                Dashboard interno • Acceso restringido
+            </div>
+
+        </div>
+
+        <!-- MÉTRICAS -->
+        <section class="grid md:grid-cols-3 gap-6">
+
+            <!-- PRODUCTOS -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition">
+
+                <div class="flex items-center justify-between">
+                    <p class="text-slate-500 font-medium">Productos</p>
+                    <span
+                        class="text-blue-100 bg-medical-light px-3 py-1 rounded-full text-xs font-bold text-medical-blue">
+                        Inventario
+                    </span>
+                </div>
+
+                <h2 class="text-5xl font-black text-medical-blue mt-4" th:text="${totalProductos}">
+                </h2>
+
+                <p class="text-sm text-slate-400 mt-2">
+                    Total registrados en sistema
+                </p>
+
+            </div>
+
+            <!-- USUARIOS -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition">
+
+                <div class="flex items-center justify-between">
+                    <p class="text-slate-500 font-medium">Usuarios</p>
+                    <span class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs font-bold">
+                        Clientes
+                    </span>
+                </div>
+
+                <h2 class="text-5xl font-black text-green-600 mt-4" th:text="${totalUsuarios}">
+                </h2>
+
+                <p class="text-sm text-slate-400 mt-2">
+                    Usuarios registrados
+                </p>
+
+            </div>
+
+            <!-- COMPRAS -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition">
+
+                <div class="flex items-center justify-between">
+                    <p class="text-slate-500 font-medium">Compras</p>
+                    <span class="bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-xs font-bold">
+                        Ventas
+                    </span>
+                </div>
+
+                <h2 class="text-5xl font-black text-purple-600 mt-4" th:text="${totalCompras}">
+                </h2>
+
+                <p class="text-sm text-slate-400 mt-2">
+                    Transacciones realizadas
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ACCESOS -->
+        <section>
+
+            <h2 class="text-xl font-black text-slate-800 mb-5">
+                Accesos rápidos
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <!-- PRODUCTOS -->
+                <a href="/admin/productos"
+                    class="group bg-white border rounded-3xl p-6 shadow-sm hover:shadow-md hover:border-medical-blue transition">
+
+                    <div class="text-3xl mb-3">💊</div>
+
+                    <h3 class="font-black text-lg group-hover:text-medical-blue transition">
+                        Productos
+                    </h3>
+
+                    <p class="text-slate-500 text-sm mt-2">
+                        Gestión de inventario farmacéutico
+                    </p>
+
+                </a>
+
+                <!-- USUARIOS -->
+                <a href="/admin/usuarios"
+                    class="group bg-white border rounded-3xl p-6 shadow-sm hover:shadow-md hover:border-green-500 transition">
+
+                    <div class="text-3xl mb-3">👥</div>
+
+                    <h3 class="font-black text-lg group-hover:text-green-600 transition">
+                        Usuarios
+                    </h3>
+
+                    <p class="text-slate-500 text-sm mt-2">
+                        Clientes registrados
+                    </p>
+
+                </a>
+
+                <!-- COMPRAS -->
+                <a href="/admin/compras"
+                    class="group bg-white border rounded-3xl p-6 shadow-sm hover:shadow-md hover:border-purple-500 transition">
+
+                    <div class="text-3xl mb-3">🧾</div>
+
+                    <h3 class="font-black text-lg group-hover:text-purple-600 transition">
+                        Compras
+                    </h3>
+
+                    <p class="text-slate-500 text-sm mt-2">
+                        Historial de ventas
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

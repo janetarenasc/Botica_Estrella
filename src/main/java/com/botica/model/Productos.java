@@ -29,8 +29,13 @@ public class Productos {
 
     private String marca;
 
+    private Boolean destacado;
+
+    private int Stock;
+
     // Constructor vacío
-    public Productos() {}
+    public Productos() {
+    }
 
     public Long getId() {
         return id;
@@ -96,4 +101,21 @@ public class Productos {
         this.marca = marca;
     }
 
+    public Boolean getDestacado() {
+        return destacado;
+    }
+
+    public void setDestacado(Boolean destacado) {
+        this.destacado = destacado;
+    }
+
+    public int getStock() {
+        return Stock;
+    }
+
+    public void setStock(int stock) {
+        Stock = stock;
+    }
+
+    
 }

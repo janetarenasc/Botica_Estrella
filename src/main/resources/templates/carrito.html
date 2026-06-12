@@ -1,132 +1,243 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Carrito | Botica Estrella</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="logo/botica_estrella-logo.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-    
-  </head>
 
-  <body class="cart-page">
-    <header class="navbar">
-      <div class="logo">
-        <img src="img/Botica.png" alt="Botica Estrella"/>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Carrito | Botica Estrella</title>
+  <link rel="icon" href="logo/botica_estrella-logo.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            medical: {
+              blue: '#0d4d8b',
+              dark: '#0a3663',
+              light: '#f0f7ff',
+              accent: '#2ecc71',
+              border: '#e2e8f0'
+            }
+          }
+        }
+      }
+    }
+  </script>
 
-      <div class="nav-actions">
-        <a href="productos.html" class="nav-item">
-          <img src="img/carrito.png" alt="Productos"/>
-          <span>Productos</span>
-        </a>
-        <a href="perfil.html" class="nav-item">
-          <img src="img/user.png" alt="Perfil"/>
-          <span>Perfil</span>
-        </a>
-        <a href="index.html" class="nav-item">
-          <img src="img/home.png" alt="Home"/>
-          <span>Home</span>
-        </a>
-      </div>
-    </header>
+</head>
 
-    <main class="cart-container">
-      <h2>Mi Carrito</h2>
+<body class="bg-slate-50 min-h-screen">
+  <!-- ================= NAVBAR MEGABUSCADOR ================= -->
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-      <div class="cart-content">
-        <div class="cart-items">
-          <div class="cart-item">
-            <img src="img/paracetamol.png" alt="Paracetamol" />
-            <div class="item-info">
-              <p>Paracetamol 120mg/5ml Jarabe</p>
-              <span>S/. 2.00</span>
-            </div>
-            <div class="item-quantity">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </div>
-            <div class="item-remove">✖</div>
-          </div>
+  <!-- ================= CARRITO ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div th:if="${mensaje}" class="mb-6 p-4 bg-green-100 border border-green-300 text-green-700 rounded-2xl font-bold">
+      <span th:text="${mensaje}"></span>
+    </div>
+    <div class="mb-8">
+      <h1 class="text-4xl font-black text-medical-dark">
+        Mi Carrito
+      </h1>
 
-          <div class="cart-item">
-            <img src="img/ibuprofeno.jpg" alt="Ibuprofeno"/>
-            <div class="item-info">
-              <p>Ibuprofeno 800 mg Tableta Recubierta</p>
-              <span>S/. 15.00</span>
-            </div>
-            <div class="item-quantity">
-              <button>-</button>
-              <span>2</span>
-              <button>+</button>
-            </div>
-            <div class="item-remove">✖</div>
-          </div>
-        </div>
-
-        <div class="cart-summary">
-          <h3>Resumen</h3>
-          <p>Subtotal: <span>S/. 32.00</span></p>
-          <p>Envío: <span>Gratis</span></p>
-          <hr />
-          <h2>Total: S/. 32.00</h2>
-          <button class="checkout-btn" onclick="openTracking()">Finalizar Compra</button>
-          <button class="link" style="margin-top: 15px; background: none; border: 1px solid #0d4d8b; color: #0d4d8b;" onclick="openTracking()">Ver Seguimiento de mi pedido</button>
-        </div>
-      </div>
-    </main>
-
-    <div id="trackingModal" class="modal">
-      <div class="modal-content" style="width: 450px;">
-        <span class="close" onclick="closeTracking()">&times;</span>
-        <h2 style="margin-bottom: 25px;">Estado de tu Pedido</h2>
-        
-        <div class="tracking-wrapper">
-          <div class="tracking-item completed">
-            <div class="tracking-icon">✔</div>
-            <div class="tracking-content">
-              <h4>Pedido Recibido</h4>
-              <p>Tu orden ha sido confirmada</p>
-            </div>
-          </div>
-          <div class="tracking-item active">
-            <div class="tracking-icon">📦</div>
-            <div class="tracking-content">
-              <h4>Preparando Pedido</h4>
-              <p>Estamos empaquetando tus productos</p>
-            </div>
-          </div>
-          <div class="tracking-item">
-            <div class="tracking-icon">🚚</div>
-            <div class="tracking-content">
-              <h4>En Camino</h4>
-              <p>El motorizado está cerca de tu dirección</p>
-            </div>
-          </div>
-          <div class="tracking-item">
-            <div class="tracking-icon">🏠</div>
-            <div class="tracking-content">
-              <h4>Entregado</h4>
-              <p>Pedido entregado con éxito</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="text-slate-500 mt-2">
+        Revisa los productos seleccionados antes de finalizar tu compra.
+      </p>
     </div>
 
-    <div id="loginModal" class="modal">...</div>
-    <div id="registerModal" class="modal">...</div>
+    <div class="grid lg:grid-cols-3 gap-8">
 
-    <footer class="footer">
-      <div class="footer-content">
-        <div><h3>Botica Estrella</h3><a href="#">Cuidando tu bienestar</a></div>
-        <div><h3>Contacto</h3><a href="#">+51 924 412 183</a></div>
-        <div><h3>Enlaces</h3><a href="nosotros.html">Sobre Nosotros</a></div>
+      <!-- PRODUCTOS -->
+      <div class="lg:col-span-2 space-y-5">
+
+        <div th:if="${#lists.isEmpty(items)}"
+          class="bg-white rounded-[2rem] border border-slate-200 shadow-sm p-12 text-center">
+
+          <div class="text-6xl mb-4">🛒</div>
+
+          <h2 class="text-2xl font-black text-slate-800">
+            Tu carrito está vacío
+          </h2>
+
+          <p class="text-slate-500 mt-3">
+            Agrega algunos productos para comenzar.
+          </p>
+
+          <a href="/productos"
+            class="inline-block mt-6 bg-medical-blue text-white px-6 py-3 rounded-xl font-bold hover:bg-medical-dark transition">
+            Ver Productos
+          </a>
+
+        </div>
+
+        <!-- ITEM -->
+        <div th:each="item : ${items}" class="bg-white rounded-[2rem] border border-slate-200 shadow-sm p-5">
+
+          <div class="flex flex-col md:flex-row gap-6 items-center">
+
+            <!-- Imagen -->
+            <div class="w-32 h-32 bg-slate-50 rounded-2xl flex items-center justify-center shrink-0">
+
+              <img th:src="@{'/img/' + ${item.producto.imagen}}" th:alt="${item.producto.nombre}"
+                class="max-h-24 object-contain">
+
+            </div>
+
+            <!-- Datos -->
+            <div class="flex-1">
+
+              <h3 class="text-xl font-black text-slate-800" th:text="${item.producto.nombre}">
+              </h3>
+
+              <p class="text-slate-500 mt-2">
+                Producto farmacéutico certificado.
+              </p>
+
+              <div class="mt-4 flex flex-wrap gap-6">
+
+                <div>
+                  <p class="text-sm text-slate-500">
+                    Precio
+                  </p>
+
+                  <p class="font-black text-medical-blue" th:text="'S/. ' + ${item.precio}">
+                  </p>
+                </div>
+
+                <div>
+                  <p class="text-sm text-slate-500">
+                    Cantidad
+                  </p>
+
+                  <p class="font-black text-slate-800" th:text="${item.cantidad}">
+                  </p>
+                </div>
+
+                <div>
+                  <p class="text-sm text-slate-500">
+                    Subtotal
+                  </p>
+
+                  <p class="font-black text-green-600" th:text="'S/. ' + (${item.precio * item.cantidad})">
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Acciones -->
+            <div class="flex flex-col gap-3">
+
+              <form th:action="@{/carrito/restar/{id}(id=${item.id})}" method="post">
+
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+                <button type="submit" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-50 font-bold">
+                  ➖
+                </button>
+
+              </form>
+
+              <form th:action="@{/carrito/sumar/{id}(id=${item.id})}" method="post">
+
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+                <button type="submit" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-50 font-bold">
+                  ➕
+                </button>
+
+              </form>
+
+              <form th:action="@{/carrito/eliminar/{id}(id=${item.id})}" method="post">
+
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+                <button type="submit"
+                  class="px-4 py-2 rounded-xl border border-red-200 text-red-500 hover:bg-red-50 font-bold">
+                  🗑
+                </button>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-      <div class="footer-bottom">© 2026 Botica Estrella+</div>
-    </footer>
 
-    <script type="module" src="script.js"></script>
-  </body>
+      <!-- RESUMEN -->
+      <div>
+
+        <div class="bg-white rounded-[2rem] border border-slate-200 shadow-sm p-8 sticky top-28">
+
+          <h2 class="text-2xl font-black text-slate-800 mb-6">
+            Resumen
+          </h2>
+
+          <div class="space-y-4">
+
+            <div class="flex justify-between">
+              <span class="text-slate-500">
+                Subtotal
+              </span>
+
+              <span class="font-bold" th:text="'S/. ' + ${total}">
+              </span>
+            </div>
+
+            <div class="flex justify-between">
+              <span class="text-slate-500">
+                Envío
+              </span>
+
+              <span class="text-green-600 font-bold">
+                Gratis
+              </span>
+            </div>
+
+            <hr>
+
+            <div class="flex justify-between items-center">
+
+              <span class="text-xl font-black">
+                Total
+              </span>
+
+              <span class="text-3xl font-black text-medical-blue" th:text="'S/. ' + ${total}">
+              </span>
+
+            </div>
+
+          </div>
+
+          <form action="/carrito/finalizar" method="post">
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <button type="submit"
+              class="w-full mt-8 bg-gradient-to-r from-medical-blue to-blue-500 text-white py-4 rounded-2xl font-black text-lg">
+
+              Finalizar Compra
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER CORPORATIVO ================= -->
+  <div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
 </html>

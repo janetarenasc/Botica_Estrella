@@ -22,4 +22,12 @@ public class ProductosService {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
     }
+
+    public List<Productos> listarDestacados() {
+
+        return repository.findAll()
+                .stream()
+                .limit(4)
+                .toList();
+    }
 }

@@ -1,103 +1,144 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Perfil | Botica Estrella</title>
-    <link rel="stylesheet" href="../static/css/styles.css" />
-    <link rel="icon" href="logo/botica_estrella-logo.ico" type="image/x-icon">
 
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Perfil | Botica Estrella</title>
 
-  <body class="profile-page">
-    <!-- NAVBAR -->
-    <header class="navbar">
-      <div class="logo">
-        <img src="img/Botica.png" alt="Botica Estrella" />
-      </div>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-      <div class="nav-actions">
-        <a href="carrito.html" class="nav-item">
-          <img src="img/carrito.png" alt="Usuario"/>
-          <span>Carrito</span>
-        </a>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            medical: {
+              blue: '#0d4d8b',
+              dark: '#0a3663',
+              light: '#f0f7ff',
+              accent: '#2ecc71',
+              border: '#e2e8f0'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
 
-        <a href="index.html" class="nav-item">
-          <img src="img/home.png" alt="Home" />
-          <span>Home</span>
-        </a>
-      </div>
-    </header>
+<body class="bg-slate-50 min-h-screen flex flex-col">
 
-    <!-- PERFIL -->
-    <section class="profile-container">
-      <div class="profile-card">
-        <div class="profile-header">
-          <img src="img/user.png" class="profile-img" alt="Usuario"/>
-          <h2>Nombre del Usuario</h2> 
-          <p>usuario@email.com</p>
-        </div>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-        <div class="profile-info">
-          <div class="info-item">
-            <strong>Teléfono:</strong>
-            <span>+51 999 999 999</span>
+  <main class="max-w-6xl mx-auto px-6 py-12 grid lg:grid-cols-3 gap-10">
+
+    <!-- ================= PERFIL ================= -->
+    <section class="lg:col-span-1 space-y-6">
+
+      <div class="bg-white border rounded-3xl shadow-sm p-6">
+
+        <div class="flex items-center gap-4">
+
+          <div class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-3xl text-medical-blue">
+            👤
           </div>
 
-          <div class="info-item">
-            <strong>Dirección:</strong>
-            <span>Av. Principal 123</span>
+          <div>
+            <h1 class="font-black text-xl" th:text="${usuario.nombre}"></h1>
+            <p class="text-sm text-slate-500" th:text="${usuario.email}"></p>
           </div>
 
-          <div class="info-item">
-            <strong>Miembro desde:</strong>
-            <span>2026</span>
-          </div>
         </div>
 
-        <div class="profile-actions">
-          <button>Editar Perfil</button>
-          <button class="logout">Cerrar Sesión</button>
+        <div class="mt-6 space-y-3 text-sm">
+
+          <div class="flex justify-between">
+            <span class="text-slate-500">Rol</span>
+            <span class="font-bold" th:text="${usuario.role}"></span>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="text-slate-500">Estado</span>
+            <span class="text-green-600 font-bold">Activo</span>
+          </div>
+
         </div>
+
+        <div class="mt-6 flex gap-3">
+
+          <a href="/carrito" class="flex-1 text-center px-4 py-2 rounded-xl bg-medical-blue text-white font-bold">
+            Carrito
+          </a>
+
+          <form action="/logout" method="post" class="flex-1">
+            <button class="w-full px-4 py-2 rounded-xl border text-red-500 font-bold">
+              Salir
+            </button>
+          </form>
+
+        </div>
+
       </div>
+
     </section>
 
-    <!-- HISTORIAL -->
-    <section class="profile-history">
-      <h2>Historial de Compras</h2>
+    <!-- ================= COMPRAS ================= -->
+    <section class="lg:col-span-2 space-y-5">
 
-      <div class="history-container">
-        <div class="history-card">
-          <p>Paracetamol 120mg</p>
-          <span>S/. 2.00</span>
-        </div>
+      <h2 class="text-2xl font-black text-slate-800">
+        Historial de compras
+      </h2>
 
-        <div class="history-card">
-          <p>Ibuprofeno 800mg</p>
-          <span>S/. 15.00</span>
-        </div>
+      <div th:if="${#lists.isEmpty(compras)}" class="bg-white border rounded-2xl p-6 text-slate-500">
+        No tienes compras todavía.
       </div>
+
+      <!-- GRID DE COMPRAS -->
+      <div class="grid md:grid-cols-2 gap-5">
+
+        <div th:each="c : ${compras}" class="bg-white border rounded-2xl p-5 shadow-sm hover:shadow-md transition">
+
+          <!-- HEADER -->
+          <div class="flex justify-between items-start">
+
+            <div>
+              <p class="font-black text-slate-800">
+                #<span th:text="${c.id}"></span>
+              </p>
+
+              <p class="text-xs text-slate-500" th:text="${#temporals.format(c.fecha, 'dd/MM/yyyy HH:mm')}">
+              </p>
+            </div>
+
+            <div class="font-black text-medical-blue" th:text="'S/. ' + ${c.total}">
+            </div>
+
+          </div>
+
+          <!-- ITEMS -->
+          <div class="mt-4 space-y-1 text-sm text-slate-600">
+
+            <div th:each="d : ${c.detalles}" class="flex justify-between">
+
+              <span th:text="${d.producto.nombre}"></span>
+
+              <span class="font-bold" th:text="${d.cantidad} + 'x'">
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div>
-          <h3>Botica Estrella</h3>
-          <a href="#">Cuidando tu bienestar</a>
-        </div>
+  </main>
 
-        <div>
-          <h3>Contacto</h3>
-          <a href="#">+51 924 412 183</a>
-        </div>
+  <div th:replace="~{fragments/footer :: footer}"></div>
 
-        <div>
-          <h3>Enlaces</h3>
-          <a href="nosotros.html">Sobre Nosotros</a>
-        </div>
-      </div>
+</body>
 
-      <div class="footer-bottom">© 2026 Botica Estrella+</div>
-    </footer>
-  </body>
 </html>

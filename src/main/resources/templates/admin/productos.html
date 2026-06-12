@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            blue: '#0d4d8b',
+                            dark: '#0a3663',
+                            light: '#f0f7ff',
+                            accent: '#2ecc71',
+                            border: '#e2e8f0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+
+        <!-- HEADER -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+
+            <div>
+                <h1 class="text-4xl font-black text-slate-800">
+                    Gestión de Productos
+                </h1>
+                <p class="text-slate-500 mt-1">
+                    Administra el inventario de la botica
+                </p>
+            </div>
+
+            <a href="/admin/productos/nuevo"
+                class="bg-gradient-to-r from-medical-blue to-blue-500 text-white px-6 py-3 rounded-2xl font-black shadow-sm hover:scale-105 transition-transform">
+                + Nuevo Producto
+            </a>
+
+        </div>
+
+        <!-- TABLE CONTAINER -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+
+            <!-- TABLE -->
+            <div class="overflow-x-auto">
+
+                <table class="w-full text-sm">
+
+                    <!-- HEADER -->
+                    <thead class="bg-slate-100 text-slate-600 uppercase text-xs tracking-wider">
+                        <tr>
+                            <th class="p-4 text-left">ID</th>
+                            <th class="p-4 text-left">Producto</th>
+                            <th class="p-4 text-left">Precio</th>
+                            <th class="p-4 text-left">Stock</th>
+                            <th class="p-4 text-left">Estado</th>
+                            <th class="p-4 text-left">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <!-- BODY -->
+                    <tbody class="divide-y divide-slate-100">
+
+                        <tr th:each="p : ${productos}"
+                            class="hover:bg-slate-50 transition">
+
+                            <!-- ID -->
+                            <td class="p-4 font-bold text-slate-500" th:text="${p.id}"></td>
+
+                            <!-- PRODUCTO -->
+                            <td class="p-4 font-semibold text-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-medical-light rounded-xl flex items-center justify-center text-medical-blue font-black">
+                                        💊
+                                    </div>
+                                    <span th:text="${p.nombre}"></span>
+                                </div>
+                            </td>
+
+                            <!-- PRECIO -->
+                            <td class="p-4 font-bold text-medical-blue"
+                                th:text="'S/. ' + ${p.precio}">
+                            </td>
+
+                            <!-- STOCK -->
+                            <td class="p-4 font-bold"
+                                th:text="${p.stock}">
+                            </td>
+
+                            <!-- ESTADO -->
+                            <td class="p-4">
+
+                                <span th:if="${p.stock == 0}"
+                                    class="px-3 py-1 rounded-full text-xs font-black bg-red-100 text-red-600">
+                                    AGOTADO
+                                </span>
+
+                                <span th:if="${p.stock > 0 and p.stock <= 5}"
+                                    class="px-3 py-1 rounded-full text-xs font-black bg-yellow-100 text-yellow-700">
+                                    STOCK BAJO
+                                </span>
+
+                                <span th:if="${p.stock > 5}"
+                                    class="px-3 py-1 rounded-full text-xs font-black bg-green-100 text-green-700">
+                                    DISPONIBLE
+                                </span>
+
+                            </td>
+
+                            <!-- ACCIONES -->
+                            <td class="p-4">
+
+                                <div class="flex gap-2">
+
+                                    <a th:href="@{/admin/productos/editar/{id}(id=${p.id})}"
+                                        class="px-4 py-2 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600 transition">
+                                        Editar
+                                    </a>
+
+                                    <form th:action="@{/admin/productos/eliminar/{id}(id=${p.id})}" method="post">
+
+                                        <input type="hidden" th:name="${_csrf.parameterName}"
+                                            th:value="${_csrf.token}">
+
+                                        <button type="submit"
+                                            class="px-4 py-2 rounded-xl bg-red-500 text-white font-bold hover:bg-red-600 transition">
+                                            Eliminar
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
