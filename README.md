@@ -22,16 +22,6 @@ El proyecto ha sido construido íntegramente con tecnologías Frontend (Vanilla 
 
 Para mantener el código limpio y escalable, se aplicó el principio de "Separación de Preocupaciones" (Separation of Concerns):
 
-```text
-📦 Botica_Estrella
- ┣ 📂 img/                # Recursos gráficos optimizados (.webp, .png, .avif)
- ┣ 📂 logo/               # Favicon corporativo (.ico)
- ┣ 📜 index.html          # Landing page y promociones destacadas
- ┣ 📜 productos.html      # Catálogo interactivo
- ┣ 📜 carrito.html        # Gestión de compras y tracking
- ┣ 📜 detalle.html        # Plantilla dinámica para visualizar items
- ┣ 📜 nosotros.html       # Historia corporativa y Google Maps integrado
- ┣ 📜 perfil.html         # Simulación de dashboard de usuario
- ┣ 📜 styles.css          # Hoja de estilos centralizada (CSS3 Variables, Flexbox, Grid)
- ┣ 📜 script.js           # Lógica global (Modales, Navbar, Carrito)
- ┗ 📜 productos.js        # Base de datos JSON exportable y auto-ejecutable
+
+<img width="325" height="477" alt="image" src="https://github.com/user-attachments/assets/9c6cc5b2-b890-475b-a148-dbfccd432b31" />
+
