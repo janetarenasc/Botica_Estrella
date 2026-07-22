@@ -31,7 +31,9 @@ public class Productos {
 
     private Boolean destacado;
 
-    private int Stock;
+    private int stock;
+    
+    private Boolean activo = true;
 
     // Constructor vacío
     public Productos() {
@@ -110,11 +112,19 @@ public class Productos {
     }
 
     public int getStock() {
-        return Stock;
+        return stock;
     }
 
     public void setStock(int stock) {
-        Stock = stock;
+        this.stock = stock;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     

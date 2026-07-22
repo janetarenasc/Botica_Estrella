@@ -28,7 +28,7 @@ public class AdminProductoController {
     // LISTAR
     @GetMapping
     public String listar(Model model) {
-        model.addAttribute("productos", productosRepo.findAll());
+        model.addAttribute("productos", productosRepo.findByActivoTrue());
         return "admin/productos";
     }
 
@@ -82,10 +82,14 @@ public class AdminProductoController {
     // ELIMINAR PRODUCTO
     @PostMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {
+
         Productos p = productosRepo.findById(id)
                 .orElseThrow();
 
-        productosRepo.delete(p);
+        p.setActivo(false);
+
+        productosRepo.save(p);
+
         return "redirect:/admin/productos";
     }
 

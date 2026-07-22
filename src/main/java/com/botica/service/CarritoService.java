@@ -12,12 +12,14 @@ import com.botica.model.Carrito;
 import com.botica.model.Compra;
 import com.botica.model.DetalleCarrito;
 import com.botica.model.DetalleCompra;
+import com.botica.model.EntradaStock;
 import com.botica.model.Productos;
 import com.botica.model.Usuario;
 import com.botica.repository.CarritoRepository;
 import com.botica.repository.CompraRepository;
 import com.botica.repository.DetalleCarritoRepository;
 import com.botica.repository.DetalleCompraRepository;
+import com.botica.repository.EntradaStockRepository;
 import com.botica.repository.ProductosRepository;
 import com.botica.repository.UsuarioRepository;
 
@@ -30,13 +32,15 @@ public class CarritoService {
     private final UsuarioRepository usuarioRepo;
     private final CompraRepository compraRepo;
     private final DetalleCompraRepository detalleCompraRepo;
+    private final EntradaStockRepository entradaRepo;
 
     public CarritoService(CarritoRepository carritoRepo,
             DetalleCarritoRepository detalleRepo,
             ProductosRepository productosRepo,
             UsuarioRepository usuarioRepo,
             CompraRepository compraRepo,
-            DetalleCompraRepository detalleCompraRepo) {
+            DetalleCompraRepository detalleCompraRepo,
+            EntradaStockRepository entradaRepo) {
 
         this.carritoRepo = carritoRepo;
         this.detalleRepo = detalleRepo;
@@ -44,6 +48,8 @@ public class CarritoService {
         this.usuarioRepo = usuarioRepo;
         this.compraRepo = compraRepo;
         this.detalleCompraRepo = detalleCompraRepo;
+        this.entradaRepo = entradaRepo;
+        ;
     }
 
     public void agregarProducto(String emailUsuario, Long productoId) {
@@ -188,7 +194,37 @@ public class CarritoService {
 
             Productos producto = i.getProducto();
 
-            producto.setStock(producto.getStock() - i.getCantidad());
+            int cantidadPendiente = i.getCantidad();
+
+            List<EntradaStock> lotes = entradaRepo.findByProductoIdAndStockDisponibleGreaterThanOrderByFechaIngresoAsc(
+                    producto.getId(),
+                    0);
+
+            for (EntradaStock lote : lotes) {
+
+                if (cantidadPendiente <= 0)
+                    break;
+
+                if (lote.getStockDisponible() >= cantidadPendiente) {
+
+                    lote.setStockDisponible(
+                            lote.getStockDisponible() - cantidadPendiente);
+
+                    cantidadPendiente = 0;
+
+                } else {
+
+                    cantidadPendiente -= lote.getStockDisponible();
+
+                    lote.setStockDisponible(0);
+                }
+
+                entradaRepo.save(lote);
+            }
+
+            producto.setStock(
+                    producto.getStock() - i.getCantidad());
+
             productosRepo.save(producto);
 
             DetalleCompra dc = new DetalleCompra();

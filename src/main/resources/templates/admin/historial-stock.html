@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Inventario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50">
+
+    <div class="max-w-6xl mx-auto p-8">
+
+        <div class="flex justify-between items-center mb-8">
+
+            <div>
+                <h1 class="text-4xl font-black">
+                    Historial de Inventario
+                </h1>
+
+                <p class="text-slate-500 mt-2" th:text="${producto.nombre}">
+                </p>
+            </div>
+
+            <button onclick="history.back()"
+                class="bg-slate-700 text-white px-5 py-3 rounded-xl font-bold hover:bg-slate-800">
+                ← Volver
+            </button>
+
+        </div>
+
+        <div class="bg-white rounded-3xl shadow overflow-hidden">
+
+            <table class="w-full">
+
+                <thead class="bg-slate-100">
+
+                    <tr>
+                        <th class="p-4 text-left">Fecha</th>
+                        <th class="p-4 text-left">Cantidad</th>
+                        <th class="p-4 text-left">Disponible</th>
+                        <th class="p-4 text-left">Precio Compra</th>
+                        <th class="p-4 text-left">Precio Venta</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr th:each="e : ${entradas}" class="border-t">
+
+                        <td class="p-4" th:text="${#temporals.format(e.fechaIngreso,'dd/MM/yyyy HH:mm')}">
+                        </td>
+
+                        <td class="p-4" th:text="${e.cantidad}">
+                        </td>
+
+                        <td class="p-4" th:text="${e.stockDisponible}">
+                        </td>
+
+                        <td class="p-4" th:text="'S/. ' + ${e.precioCompra}">
+                        </td>
+
+                        <td class="p-4" th:text="'S/. ' + ${e.precioVenta}">
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

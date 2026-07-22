@@ -9,4 +9,5 @@ import com.botica.model.Productos;
 public interface ProductosRepository extends JpaRepository<Productos, Long>{
 
     List<Productos> findByDestacadoTrue();
+    List<Productos> findByActivoTrue();
 }

@@ -1,5 +1,7 @@
 package com.botica.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +19,8 @@ public class Usuario {
     private String password;
 
     private String role;
+
+    private LocalDateTime ultimaActividad;
 
     public Usuario() {
     }
@@ -59,5 +63,13 @@ public class Usuario {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public LocalDateTime getUltimaActividad() {
+        return ultimaActividad;
+    }
+
+    public void setUltimaActividad(LocalDateTime ultimaActividad) {
+        this.ultimaActividad = ultimaActividad;
     }
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ingreso de Stock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100">
+
+    <div class="max-w-2xl mx-auto mt-10 bg-white p-8 rounded-3xl shadow">
+
+        <h1 class="text-3xl font-black mb-6">
+            Ingreso de Stock
+        </h1>
+
+        <h2 class="text-xl font-bold mb-6" th:text="${producto.nombre}">
+        </h2>
+
+        <form action="/admin/stock/guardar" method="post" class="space-y-4">
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <input type="hidden" name="productoId" th:value="${producto.id}">
+
+            <div>
+                <label class="font-bold">
+                    Cantidad ingresada
+                </label>
+
+                <input type="number" name="cantidad" required class="w-full border rounded-xl p-3">
+            </div>
+
+            <div>
+                <label class="font-bold">
+                    Precio de compra
+                </label>
+
+                <input type="number" step="0.01" name="precioCompra" required class="w-full border rounded-xl p-3">
+            </div>
+
+            <div>
+                <label class="font-bold">
+                    Nuevo precio de venta
+                </label>
+
+                <input type="number" step="0.01" name="precioVenta" required class="w-full border rounded-xl p-3">
+            </div>
+
+            <button class="w-full bg-green-600 text-white py-3 rounded-xl font-bold">
+                Guardar Stock
+            </button>
+            <button onclick="history.back()"
+                class="bg-slate-700 text-white px-5 py-3 rounded-xl font-bold hover:bg-slate-800">
+                ← Volver
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
